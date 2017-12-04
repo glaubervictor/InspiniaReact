@@ -35,7 +35,6 @@ export default class Navigation extends Component {
                             <MenuItem path="#/teste" label="Teste" />
                         </MenuTree>
                     </ul>
-                )
                 </div>
             </nav>
         )
