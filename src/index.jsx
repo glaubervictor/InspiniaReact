@@ -1,6 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import { LocaleProvider } from 'antd'
+import ptBR from 'antd/lib/locale-provider/pt_BR'
+
 import { applyMiddleware, createStore } from 'redux'
 import { Provider } from 'react-redux'
 
@@ -16,7 +19,9 @@ const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_
 const store = applyMiddleware(multi, thunk, promise)(createStore)(reducers, devTools)
 
 ReactDOM.render(
-    <Provider store={store}>
-        <Main/>
-    </Provider>, 
+    <LocaleProvider locale={ptBR}>
+        <Provider store={store}>
+            <Main/>
+        </Provider>
+    </LocaleProvider>, 
     document.getElementById('app'))

@@ -1,5 +1,10 @@
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const path = require('path')
+const fs  = require('fs')
+
+const lessToJs = require('less-vars-to-js');
+const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, './ant-default-vars.less'), 'utf8'));
 
 module.exports = {
     entry: './src/index.jsx',
@@ -32,8 +37,20 @@ module.exports = {
             exclude: /node_modules/,
             query: {
                 presets: ['es2015', 'react'],
-                plugins: ['transform-object-rest-spread']
+                plugins: [['transform-object-rest-spread'], ['import', { libraryName: "antd", style: true }]]
             }
+        }, {
+            test: /\.less$/,
+            use: [{
+                loader: "style-loader"
+            }, {
+                loader: "css-loader"
+            }, {
+                loader: "less-loader",
+                options: {
+                    modifyVars: themeVariables
+                }
+            }]
         }, {
             test: /\.scss/,
             loader: 'style-loader!css-loader!sass-loader'
