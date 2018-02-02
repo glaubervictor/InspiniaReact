@@ -1,23 +1,19 @@
 import React, { Component } from 'react'
-import { smoothlyMenu } from './helpers/helpers'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
-export default class TopHeader extends Component {
+import { collapseMenu } from '../actions/menuActions'
 
-    toggleNavigation(e) {
-        e.preventDefault();
-        $("body").toggleClass("mini-navbar");
-        smoothlyMenu();
-    }
-
+class TopHeader extends Component {
     render() {
         return (
             <div className="row border-bottom">
-                <nav className="navbar navbar-static-top white-bg" role="navigation" style={{marginBottom: 0}}>
+                <nav className="navbar navbar-static-top white-bg" role="navigation" style={{ marginBottom: 0 }}>
                     <div className="navbar-header">
-                        <a className="navbar-minimalize minimalize-styl-2 btn btn-primary"  onClick={this.toggleNavigation} href="#"><i className="fa fa-bars"></i> </a>
+                        <a className="navbar-minimalize minimalize-styl-2 btn btn-primary" onClick={() => this.props.collapseMenu()} href="#"><i className="fa fa-bars"></i> </a>
                         <form role="search" className="navbar-form-custom" method="post" action="#">
                             <div className="form-group">
-                                <input type="text" placeholder="Faça sua pesquisa..." className="form-control" name="top-search" id="top-search"/>
+                                <input type="text" placeholder="Faça sua pesquisa..." className="form-control" name="top-search" id="top-search" />
                             </div>
                         </form>
                     </div>
@@ -33,3 +29,6 @@ export default class TopHeader extends Component {
         )
     }
 }
+
+const mapDispatchToProps = dispatch => bindActionCreators({ collapseMenu }, dispatch)
+export default connect(null, mapDispatchToProps)(TopHeader)

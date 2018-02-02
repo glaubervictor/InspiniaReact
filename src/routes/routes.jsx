@@ -8,7 +8,6 @@ import TesteIndex from '../pages/teste/index'
 export default class Routes extends Component {
     render() {
         const { router, params, location, routes } = this.props
-        debugger
         return (
             <Router history={hashHistory}>
                 <Route path='/' component={DashboardIndex} />

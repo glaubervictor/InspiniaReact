@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 import { reducer as reduxFormReducer } from 'redux-form'
 
-//import AuthReducer from './authReducers'
+import menuReducer from './menuReducer'
 
 const rootReducer = combineReducers({
-    form: reduxFormReducer
-    //auth: AuthReducer
+    form: reduxFormReducer,
+    menu: menuReducer
 })
 
 export default rootReducer
