@@ -11,7 +11,7 @@ export default class Header extends Component {
                             <a href="#/home">Home</a>
                         </li>
                         <li className="active">
-                            {this.props.title}
+                            <strong>{this.props.title}</strong>
                         </li>
                     </ol>
                 </div>

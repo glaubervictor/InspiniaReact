@@ -13,6 +13,11 @@ class Navigation extends Component {
         smoothlyMenu()
     }
 
+    handleClick(e) {
+        debugger
+        console.log('click', e);
+    }
+
     render() {
         return (
             <nav className="navbar-default navbar-static-side" role="navigation">
@@ -43,6 +48,7 @@ class Navigation extends Component {
                         {/* menu */}
                         <Menu
                             inlineCollapsed={this.props.menu.collapsed}
+                            onClick={this.handleClick}
                             mode="inline"
                             theme="dark"
                             style={{ width: "100%" }}>

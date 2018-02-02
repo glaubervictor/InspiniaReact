@@ -17,12 +17,6 @@ export default class Main extends Component {
             correctHeight();
             detectBody();
         });
-
-        $('.metismenu a').click(() => {
-            setTimeout(() => {
-                correctHeight();
-            }, 300)
-        });
     }
 
     render() {
