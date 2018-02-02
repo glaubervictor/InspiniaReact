@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Messages from './messages'
 import Progress from './progress'
 import Navigation from './navigation'
 import TopHeader from './topHeader'
@@ -35,7 +34,6 @@ export default class Main extends Component {
                     <TopHeader />
                     <Routes />
                     <Footer />
-                    <Messages />
                 </div>
             </div>
         )
