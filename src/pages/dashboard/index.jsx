@@ -7,8 +7,7 @@ import Content from '../../theme/content'
 export default class Index extends Component {
 
     render() {
-        return
-        (
+        return (
             <div>
                 <Header title="Dashboard">
                     <Link to="/home" className="btn btn-warning btn-sm">Voltar</Link>

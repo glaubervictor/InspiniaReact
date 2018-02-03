@@ -18,7 +18,7 @@ const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_
 
 const store = applyMiddleware(multi, thunk, promise)(createStore)(reducers, devTools)
 
-ReactDOM.render(
+ReactDOM.render (
     <LocaleProvider locale={ptBR}>
         <Provider store={store}>
             <Main/>

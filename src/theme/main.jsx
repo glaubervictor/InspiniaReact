@@ -10,10 +10,10 @@ import './assets/dependencies'
 import Routes from '../routes/routes'
 
 export default class Main extends Component {
-    
+
     componentDidMount() {
 
-        $(window).bind("load resize", function() {
+        $(window).bind("load resize", function () {
             correctHeight();
             detectBody();
         });
