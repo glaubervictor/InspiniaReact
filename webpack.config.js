@@ -6,8 +6,10 @@ const fs  = require('fs')
 const lessToJs = require('less-vars-to-js');
 const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, './ant-default-vars.less'), 'utf8'));
 
+require('babel-polyfill')
+
 module.exports = {
-    entry: './src/index.jsx',
+    entry: ['babel-polyfill', './src/index.jsx'],
     output: {
         path: __dirname + '/public',
         filename: './app.js'
