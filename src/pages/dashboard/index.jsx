@@ -1,10 +1,20 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 
+//Redux
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
 import Header from '../../theme/header'
 import Content from '../../theme/content'
 
-export default class Index extends Component {
+import { minhaFuncao } from '../../actions/testeActions'
+
+class Index extends Component {
+
+    componentWillMount() {
+        this.props.minhaFuncao()
+    }
 
     render() {
         return (
@@ -20,7 +30,7 @@ export default class Index extends Component {
                                     Página dashboard
                                 </h1>
                                 <small>
-                                    Exemplo da página dashboard.
+                                    { this.props.teste.meuCep.logradouro }
                                 </small>
                             </div>
                         </div>
@@ -30,3 +40,9 @@ export default class Index extends Component {
         )
     }
 }
+
+const mapStateToProps = state => ({ teste: state.teste })
+const mapDispatchToProps = dispatch => bindActionCreators({ 
+    minhaFuncao }, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Index)
