@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export default class Header extends Component {
     render(){
@@ -7,10 +8,10 @@ export default class Header extends Component {
                 <div className="col-sm-4">
                     <h2>{this.props.title}</h2>
                     <ol className="breadcrumb">
-                        <li>
-                            <a href="#/home">Home</a>
+                        <li className="breadcrumb-item">
+                            <Link to="/home">Home</Link>
                         </li>
-                        <li className="active">
+                        <li className="breadcrumb-item active">
                             <strong>{this.props.title}</strong>
                         </li>
                     </ol>

@@ -11,7 +11,7 @@ require('babel-polyfill')
 module.exports = {
     entry: ['babel-polyfill', './src/index.jsx'],
     output: {
-        path: __dirname + '/public',
+        path: __dirname + '/public/bundle',
         filename: './app.js'
     },
     devServer: {
@@ -65,9 +65,6 @@ module.exports = {
         }, {
             test: /\.woff|.woff2|.ttf|.eot|.svg|.png|.jpg*.*$/,
             loader: 'file-loader'
-        }, {
-            test: /\.(png|jpg|gif)(\?v=\d+\.\d+\.\d+)?$/,
-            loader: 'url-loader?limit=100000'
         }]
     }
 }

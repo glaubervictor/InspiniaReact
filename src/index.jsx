@@ -7,6 +7,9 @@ import ptBR from 'antd/lib/locale-provider/pt_BR'
 import { applyMiddleware, createStore } from 'redux'
 import { Provider } from 'react-redux'
 
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from './sagas'
+
 import promise from 'redux-promise'
 import multi from 'redux-multi'
 import thunk from 'redux-thunk'
@@ -16,7 +19,10 @@ import Main from './theme/main'
 
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
-const store = applyMiddleware(multi, thunk, promise)(createStore)(reducers, devTools)
+const sagaMiddlaware = createSagaMiddleware()
+const store = applyMiddleware(multi, thunk, promise, sagaMiddlaware)(createStore)(reducers, devTools)
+
+sagaMiddlaware.run(rootSaga)
 
 ReactDOM.render (
     <LocaleProvider locale={ptBR}>

@@ -9,3 +9,4 @@ import './css/custom.css'
 
 import 'modules/jquery/dist/jquery.min'
 import 'modules/bootstrap/dist/js/bootstrap.min'
+import 'modules/metismenu/dist/metisMenu.min'
