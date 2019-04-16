@@ -1,13 +1,11 @@
-import { combineReducers } from 'redux'
-import { reducer as reduxFormReducer } from 'redux-form'
+import { combineReducers } from "redux";
 
-import menuReducer from './menuReducer'
-import testeReducer from './testeReducer'
+import menuReducer from "./menuReducer";
+import testeReducer from "./testeReducer";
 
 const rootReducer = combineReducers({
-    form: reduxFormReducer,
-    menu: menuReducer,
-    teste: testeReducer
-})
+  menu: menuReducer,
+  teste: testeReducer
+});
 
-export default rootReducer
+export default rootReducer;
