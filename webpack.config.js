@@ -1,10 +1,11 @@
 const webpack = require("webpack");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 const path = require("path");
 const fs = require("fs");
 
 const lessToJs = require("less-vars-to-js");
-const themeVariables = lessToJs(
+const theme = lessToJs(
   fs.readFileSync(path.join(__dirname, "./ant-default-vars.less"), "utf8")
 );
 
@@ -32,14 +33,17 @@ module.exports = {
       jQuery: "jquery",
       "window.jQuery": "jquery"
     }),
-    new ExtractTextPlugin("app.css")
+    new MiniCssExtractPlugin({
+      filename: "app.css",
+      chunkFilename: "[id].css"
+    })
   ],
   module: {
-    loaders: [
+    rules: [
       {
         test: /.js[x]?$/,
         loader: "babel-loader",
-        exclude: /node_modules/,
+        exclude: [/node_modules/],
         query: {
           presets: ["es2015", "react"],
           plugins: [
@@ -60,8 +64,8 @@ module.exports = {
           {
             loader: "less-loader",
             options: {
-              modifyVars: themeVariables,
-              javascriptEnabled: true
+              javascriptEnabled: true,
+              modifyVars: theme
             }
           }
         ]
@@ -72,10 +76,16 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader"
-        })
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: "../",
+              hmr: process.env.NODE_ENV === "development"
+            }
+          },
+          "css-loader"
+        ]
       },
       {
         test: /\.woff|.woff2|.ttf|.eot|.svg|.png|.jpg*.*$/,
